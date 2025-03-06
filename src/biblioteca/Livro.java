@@ -5,14 +5,20 @@ public class Livro extends ItemBiblioteca {
 
     public Livro(String titulo, String autor, int ano, String isbn) {
         super(titulo, autor, ano);
-        this.isbn = isbn;
+        setIsbn(isbn); // Aplicando validação ao definir ISBN
     }
-    
+
     @Override
     public void exibirDetalhes() {
         System.out.println("Livro: " + titulo + " | Autor: " + autor + " | Ano: " + ano + " | ISBN: " + isbn);
     }
-    
+
     public String getIsbn() { return isbn; }
-    public void setIsbn(String isbn) { this.isbn = isbn; }
+
+    public void setIsbn(String isbn) {
+        if (!isbn.matches("\\d{13}")) {
+            throw new IllegalArgumentException("Erro: O ISBN deve conter exatamente 13 dígitos numéricos.");
+        }
+        this.isbn = isbn;
+    }
 }
