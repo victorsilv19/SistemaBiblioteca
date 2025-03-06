@@ -3,7 +3,7 @@ package biblioteca;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Biblioteca implements Operacoes {
+public class biblioteca implements Operacoes {
     private ArrayList<Livro> livros = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
 
