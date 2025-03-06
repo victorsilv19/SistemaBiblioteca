@@ -11,7 +11,7 @@ public class SistemaBiblioteca {
     }
 
     public static void main(String[] args) {
-        Biblioteca biblioteca = new Biblioteca();
+        biblioteca biblioteca = new biblioteca();
         Scanner scanner = new Scanner(System.in);
         int opcao;
         
