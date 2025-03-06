@@ -3,7 +3,7 @@ package biblioteca;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class biblioteca implements Operacoes {
+public class Biblioteca implements Operacoes {
     private ArrayList<Livro> livros = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
 
@@ -11,13 +11,41 @@ public class biblioteca implements Operacoes {
     public void cadastrar() {
         System.out.print("Título: ");
         String titulo = scanner.nextLine();
-        System.out.print("Autor: ");
-        String autor = scanner.nextLine();
-        System.out.print("Ano: ");
-        int ano = scanner.nextInt();
-        scanner.nextLine(); 
-        System.out.print("ISBN: ");
-        String isbn = scanner.nextLine();
+
+        String autor;
+        while (true) {
+            System.out.print("Autor: ");
+            autor = scanner.nextLine();
+            if (autor.matches(".*\\d.*")) {
+                System.out.println("Erro: O autor não pode conter números.");
+            } else {
+                break;
+            }
+        }
+
+        int ano;
+        while (true) {
+            System.out.print("Ano: ");
+            String anoStr = scanner.nextLine();
+            if (anoStr.matches("\\d{4}")) {
+                ano = Integer.parseInt(anoStr);
+                break;
+            } else {
+                System.out.println("Erro: O ano deve ter exatamente 4 dígitos.");
+            }
+        }
+
+        String isbn;
+        while (true) {
+            System.out.print("ISBN: ");
+            isbn = scanner.nextLine();
+            if (isbn.matches("\\d{13}")) {
+                break;
+            } else {
+                System.out.println("Erro: O ISBN deve conter exatamente 13 dígitos numéricos.");
+            }
+        }
+
         livros.add(new Livro(titulo, autor, ano, isbn));
         System.out.println("Livro cadastrado com sucesso!");
     }
@@ -39,13 +67,43 @@ public class biblioteca implements Operacoes {
         String titulo = scanner.nextLine();
         for (Livro livro : livros) {
             if (livro.getTitulo().equalsIgnoreCase(titulo)) {
-                System.out.print("Novo Autor: ");
-                livro.setAutor(scanner.nextLine());
-                System.out.print("Novo Ano: ");
-                livro.setAno(scanner.nextInt());
-                scanner.nextLine();
-                System.out.print("Novo ISBN: ");
-                livro.setIsbn(scanner.nextLine());
+                String autor;
+                while (true) {
+                    System.out.print("Novo Autor: ");
+                    autor = scanner.nextLine();
+                    if (autor.matches(".*\\d.*")) {
+                        System.out.println("Erro: O autor não pode conter números.");
+                    } else {
+                        break;
+                    }
+                }
+                livro.setAutor(autor);
+
+                int ano;
+                while (true) {
+                    System.out.print("Novo Ano: ");
+                    String anoStr = scanner.nextLine();
+                    if (anoStr.matches("\\d{4}")) {
+                        ano = Integer.parseInt(anoStr);
+                        break;
+                    } else {
+                        System.out.println("Erro: O ano deve ter exatamente 4 dígitos.");
+                    }
+                }
+                livro.setAno(ano);
+
+                String isbn;
+                while (true) {
+                    System.out.print("Novo ISBN: ");
+                    isbn = scanner.nextLine();
+                    if (isbn.matches("\\d{13}")) {
+                        break;
+                    } else {
+                        System.out.println("Erro: O ISBN deve conter exatamente 13 dígitos numéricos.");
+                    }
+                }
+                livro.setIsbn(isbn);
+
                 System.out.println("Livro atualizado com sucesso!");
                 return;
             }
