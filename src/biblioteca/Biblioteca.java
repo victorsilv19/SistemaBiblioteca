@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // Declara a classe 'Biblioteca', que implementa a interface 'Operacoes' (Herança e Polimorfismo)
-public class biblioteca implements Operacoes {  
+public class Biblioteca implements Operacoes {  
     // Lista para armazenar os livros cadastrados (Encapsulamento)
     private ArrayList<Livro> livros = new ArrayList<>();
     

@@ -14,7 +14,7 @@ public class SistemaBiblioteca {
 
     // Metodo principal (ponto de entrada do programa)
     public static void main(String[] args) {
-        biblioteca biblioteca = new biblioteca(); // Instancia um objeto da classe biblioteca
+        Biblioteca biblioteca = new Biblioteca(); // Instancia um objeto da classe biblioteca
         Scanner scanner = new Scanner(System.in); // Instancia um objeto Scanner para entrada de dados
         int opcao; // Variavel para armazenar a opcao do usuario
         
