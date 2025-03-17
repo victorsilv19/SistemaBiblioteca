@@ -1,5 +1,6 @@
 package biblioteca; 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,9 +8,9 @@ import java.util.Scanner;
 public class Biblioteca implements Operacoes {  
     // Lista para armazenar os livros cadastrados (Encapsulamento)
     private ArrayList<Livro> livros = new ArrayList<>();
-    
+    private ArrayList<Emprestimo> emprestimos = new ArrayList<>();
     // Scanner para entrada de dados pelo usuário
-    private Scanner scanner = new Scanner(System.in);
+     Scanner scanner = new Scanner(System.in);
 
     // Método para cadastrar um novo livro na biblioteca
     @Override // Sobrescrita de metodo (Polimorfismo)
@@ -145,4 +146,61 @@ public class Biblioteca implements Operacoes {
             System.out.println("Livro não encontrado.");
         }
     }
+
+    public void emprestimoLivros() {
+    	System.out.println("Informe o título do Livro para o empréstimo: ");
+    	String titulo = scanner.nextLine();
+    	
+    	for (Livro livro : livros) {
+    		
+    		if(livro.getTitulo().equalsIgnoreCase(titulo)) {
+    			
+    			if(livro.estaEmprestado()) {
+    				System.out.println("Erro!!: Este livro já está emprestado.");
+    			}else {
+    				System.out.print("Nome do usuário : ");
+    				String usuario = scanner.nextLine();
+    				
+    				LocalDate dataEmprestimo = LocalDate.now();
+    				LocalDate dataDevolucao = dataEmprestimo.plusDays(7); //data de devolução dos livros
+    				
+    				Emprestimo novoEmprestimo = new Emprestimo(livro, usuario, dataEmprestimo, dataDevolucao);
+    				emprestimos.add(novoEmprestimo);
+    				System.out.println("Livro emprestado com sucesso.");
+    				novoEmprestimo.ExibirDetalhes();
+    			}
+    			return;
+    		}
+    	}
+    	System.out.println("Erro!!: Livro não encontrado");
+    }
+    
+    public void listarEmprestimos() {
+        if (emprestimos.isEmpty()) {
+            System.out.println("Nenhum livro emprestado.");
+            return;
+        }
+
+        System.out.println("Lista de livros emprestados:");
+        for (Emprestimo emprestimo : emprestimos) {
+            emprestimo.ExibirDetalhes();
+        }
+    }
+    
+    public void devolverLivros() {
+    	System.out.println("Digite o título do livro a ser devolvido: ");
+    	String titulo = scanner.nextLine(); //irá ler o título do livro que vai ser devolvido.
+    	
+    	//um pequeno For que irá percorrer a lista de empréstimos
+    	for(Emprestimo emprestimo : emprestimos) {
+    		if(emprestimo.getLivro().getTitulo().equals(titulo)) {
+    			emprestimos.remove(emprestimo); //irá remover o emprestimo da lista
+    			System.out.println("Livro devolvido com sucesso!!");
+    			return; //após a devolução sai do método
+    		}
+    	}
+    	System.out.println("Erro!!: Livro não encontrado");
+    }
 }
+
+
