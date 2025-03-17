@@ -30,7 +30,8 @@ public LocalDate getDataDevolucao() {return dataDevolucao;}
 
 	public void ExibirDetalhes() {
 		
-		System.out.println("Livro: " + livro.getTitulo() + "| Usuário: " + usuario + "| Data de Empréstimo: " + dataEmprestimo + "| Data de Devolução: " + 
+		System.out.println("Livro: " + livro.getTitulo() + "| Usuário: "
+				+ "" + usuario + "| Data de Empréstimo: " + dataEmprestimo + "| Data de Devolução: " + 
 		dataDevolucao);
 		
 	}
