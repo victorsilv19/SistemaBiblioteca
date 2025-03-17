@@ -25,7 +25,10 @@ public class SistemaBiblioteca {
             System.out.println("2. Listar Livros");
             System.out.println("3. Modificar Livro");
             System.out.println("4. Remover Livro");
-            System.out.println("5. Sair");
+            System.out.println("5. Emprestar Livro");
+            System.out.println("6. Listar empréstimo");
+            System.out.println("7. Devolução de livros");
+            System.out.println("8. Sair");
             System.out.print("Escolha uma opcao: ");
             opcao = scanner.nextInt(); // Le a opcao escolhida pelo usuario
             scanner.nextLine(); // Limpa o buffer do teclado
@@ -48,10 +51,24 @@ public class SistemaBiblioteca {
                     biblioteca.remover(); // Chama o metodo para remover um livro
                     pausa(); // Aguarda o usuario pressionar Enter antes de continuar
                 }
-                case 5 -> System.out.println("Saindo..."); // Mensagem ao sair do programa
+                case 5 -> {
+                	biblioteca.emprestimoLivros();
+                	pausa();
+                }
+                case 6 ->{
+                	biblioteca.listarEmprestimos();
+                	pausa();
+                }
+                case 7 ->{
+                	biblioteca.devolverLivros();
+                	pausa();
+                }
+                
+                case 8 -> System.out.println("Saindo..."); // Mensagem ao sair do programa
                 default -> System.out.println("Opcao invalida!"); // Mensagem para opcao invalida
+             
             }
-        } while (opcao != 5); // O loop continua ate que o usuario escolha a opcao 5 (Sair)
+        } while (opcao != 8); // O loop continua ate que o usuario escolha a opcao 8 (Sair)
         
         scanner.close(); // Fecha o scanner para liberar recursos
     }
