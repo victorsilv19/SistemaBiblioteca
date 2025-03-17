@@ -3,37 +3,56 @@ package biblioteca;
 import java.time.LocalDate;
 
 public class Emprestimo {
-	private Livro livro;
-	private String usuario;
-	private LocalDate dataEmprestimo;
-	private LocalDate dataDevolucao;
+    private Livro livro;
+    private String usuario;
+    private LocalDate dataEmprestimo;
+    private LocalDate dataDevolucao;
 
+    public Emprestimo(Livro livro, String usuario, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
+        this.livro = livro;
+        this.usuario = usuario;
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataDevolucao = dataDevolucao;
+        livro.setEmprestado(true); // Define o livro como emprestado
+    }
 
-	//construtor
-public Emprestimo(Livro livro, String usuario, LocalDate dataEmprestimo, LocalDate dataDevolucao) {
-	
-	this.livro = livro;
-	this.usuario = usuario;
-	this.dataEmprestimo = dataEmprestimo;
-	this.dataDevolucao = dataDevolucao;
-	livro.setEmprestado(true); //irá marcar que o livro foi emprestado
-   }
+    public Livro getLivro() {
+        return livro;
+    }
 
+    public void setLivro(Livro livro) {
+        this.livro = livro;
+    }
 
-   //getters
-public Livro getLivro() {return livro;}
-public String getUsuario() {return usuario;}
-public LocalDate getDataEmprestimo() {return dataEmprestimo;}
-public LocalDate getDataDevolucao() {return dataDevolucao;}
+    public String getUsuario() {
+        return usuario;
+    }
 
-	//exibir os detalhes de empréstimo
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 
-	public void ExibirDetalhes() {
-		
-		System.out.println("Livro: " + livro.getTitulo() + "| Usuário: " + usuario + "| Data de Empréstimo: " + dataEmprestimo + "| Data de Devolução: " + 
-		dataDevolucao);
-		
-	}
+    public LocalDate getDataEmprestimo() {
+        return dataEmprestimo;
+    }
 
+    public void setDataEmprestimo(LocalDate dataEmprestimo) {
+        this.dataEmprestimo = dataEmprestimo;
+    }
 
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public void setDataDevolucao(LocalDate dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
+    }
+
+    public void exibirDetalhes() {
+        System.out.println("Livro: " + livro.getTitulo());
+        System.out.println("Usuário: " + usuario);
+        System.out.println("Data do Empréstimo: " + dataEmprestimo);
+        System.out.println("Data de Devolução: " + dataDevolucao);
+        System.out.println("----------------------------------");
+    }
 }
