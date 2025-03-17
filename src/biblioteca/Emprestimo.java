@@ -32,9 +32,13 @@ public class Emprestimo {
         this.usuario = usuario;
     }
 
-    public LocalDate getDataEmprestimo() {
-        return dataEmprestimo;
-    }
+	public void ExibirDetalhes() {
+		
+		System.out.println("Livro: " + livro.getTitulo() + "| Usuário: "
+				+ "" + usuario + "| Data de Empréstimo: " + dataEmprestimo + "| Data de Devolução: " + 
+		dataDevolucao);
+		
+	}
 
     public void setDataEmprestimo(LocalDate dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
