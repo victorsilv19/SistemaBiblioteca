@@ -146,7 +146,11 @@ public class Biblioteca implements Operacoes {
             System.out.println("Livro não encontrado.");
         }
     }
-
+    
+    
+    
+    
+//metodo de emprestimo
     public void emprestimoLivros() {
     	System.out.println("Informe o título do Livro para o empréstimo: ");
     	String titulo = scanner.nextLine();
@@ -175,6 +179,7 @@ public class Biblioteca implements Operacoes {
     	System.out.println("Erro!!: Livro não encontrado");
     }
     
+    //metodo de lista de emprestimo
     public void listarEmprestimos() {
         if (emprestimos.isEmpty()) {
             System.out.println("Nenhum livro emprestado.");
@@ -187,6 +192,8 @@ public class Biblioteca implements Operacoes {
         }
     }
     
+    
+    //metodo de devolução
     public void devolverLivros() {
     	System.out.println("Digite o título do livro a ser devolvido: ");
     	String titulo = scanner.nextLine(); //irá ler o título do livro que vai ser devolvido.
