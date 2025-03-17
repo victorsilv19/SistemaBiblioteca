@@ -5,4 +5,7 @@ public interface Operacoes {
     void listar();
     void modificar();
     void remover();
+    void emprestimoLivros();
+    void listarEmprestimos();
+    void devolverLivros();
 }
